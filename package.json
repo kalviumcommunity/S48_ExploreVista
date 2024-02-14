@@ -1,0 +1,11 @@
+{
+  "name": "s48_explorevista",
+  "version": "1.0.0",
+  "description": "ExploreVista: Your Personalized City Travel Guide All Over the World\r Welcome to ExploreVista, your go-to web application for discovering the best places to visit all over the world. Whether you're planning a vacation, a business trip, or a spontaneous adventure, ExploreVista is here to provide you with personalized and curated recommendations for an unforgettable journey.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
