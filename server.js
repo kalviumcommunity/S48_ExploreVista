@@ -1,42 +1,33 @@
-const express = require('express');
-const MongoClient = require('mongodb').MongoClient;
+const express = require("express");
+const mongoose = require("mongoose");
 
 const app = express();
 const port = process.env.PUBLIC_PORT || 3000;
 
-// MongoDB connection URL from the environment variable
-const mongoURL = process.env.MONGO_URL;
-
-// Connect to MongoDB
-MongoClient.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true }, (err, client) => {
-  if (err) {
-    console.error('Error connecting to MongoDB:', err);
-    return;
+async function Connection() {
+  try {
+    await mongoose.connect(
+      "mongodb+srv://yashasnaidu3:King%402005@cluster0.gll0see.mongodb.net/"
+    );
+    console.log("Connected to MongoDB");
+  } catch (err) {
+    console.log(err.message);
   }
+}
 
-  // Database name
-  const dbName = process.env.MONGO_DB_NAME;
+app.get("/", (req, res) => {
+  res.json({ message: "pong" });
+});
 
-  // Access the database
-  const db = client.db(dbName);
+app.get("/status", (req, res) => {
+  const dbStatus =
+    mongoose.connection.readyState === 1 ? "Connected" : "Disconnected";
+  res.send(`Database Connection Status: ${dbStatus}`);
+});
 
-  // Define the route for /ping with the response in JSON
-  app.get('/ping', async (req, res) => {
-    try {
-      // Example MongoDB query
-      const result = await db.collection('yourCollection').find({}).toArray();
-      res.json({ message: 'pong', mongoData: result });
-    } catch (error) {
-      console.error('Error querying MongoDB:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  });
-
-  // Additional routes and middleware can be added here
-
-  // Start the server
-  app.listen(port, () => {
-    console.log(`🚀 server running on PORT: ${port}`);
+Connection().then(() => {
+  app.listen(8080, () => {
+    console.log("connected to port");
   });
 });
 
