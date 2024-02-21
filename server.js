@@ -26,7 +26,7 @@ app.get("/status", (req, res) => {
 });
 
 Connection().then(() => {
-  app.listen(8080, () => {
+  app.listen({port}, () => {
     console.log("connected to port");
   });
 });
