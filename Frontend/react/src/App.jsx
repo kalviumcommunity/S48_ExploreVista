@@ -3,14 +3,12 @@ import React from 'react';
 import './App.css';
 import {Routes,Route, Link } from 'react-router-dom';
 import Forms from './components/Signup'
+import Navbar from './Navbar';
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to ExploreVista</h1>
-      <p>This is a simple landing page for my ASAP project called ExploreVista.</p>
-      <Link to="/Signup">
-       <button>Sign Up</button> 
-      </Link>
+    <Navbar/>
+      
       <Routes>
         <Route path="/Signup" element={<Forms/>}></Route>
       </Routes>
