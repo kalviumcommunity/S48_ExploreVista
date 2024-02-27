@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 export default function Form() {
   const [field, setField] = useState({
-    firstName: "",
+    userName: "", // Change field name to userName
     email: "",
     password: "",
-    confirmPassword: "", // New field for password confirmation
+    confirmPassword: "",
   });
 
   const [submitted, setSubmit] = useState(false);
@@ -15,10 +15,8 @@ export default function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (field.firstName && field.email && field.password && field.confirmPassword) {
-      // Add password matching validation
+    if (field.userName && field.email && field.password && field.confirmPassword) {
       if (field.password === field.confirmPassword) {
-        // Add email format validation
         if (validateEmail(field.email)) {
           setValidation(true);
         } else {
@@ -31,7 +29,6 @@ export default function Form() {
     setSubmit(true);
   };
 
-  // Email validation function
   const validateEmail = (email) => {
     const re = /\S+@\S+\.\S+/;
     return re.test(email);
@@ -46,17 +43,17 @@ export default function Form() {
           ) : null}
 
           <input
-            id="first-name"
+            id="user-name"
             className="form-field"
             type="text"
-            placeholder="First Name"
-            name="firstName"
-            value={field.firstName}
+            placeholder="User Name"
+            name="userName"
+            value={field.userName}
             onChange={(e) => {
-              setField({ ...field, firstName: e.target.value });
+              setField({ ...field, userName: e.target.value });
             }}
           />
-          {submitted && !field.firstName ? <span>Please enter your Name</span> : null}
+          {submitted && !field.userName ? <span>Please enter your User Name</span> : null}
 
           <input
             id="email"
