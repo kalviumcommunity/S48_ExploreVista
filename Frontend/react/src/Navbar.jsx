@@ -7,8 +7,8 @@ import './Navbar.css'; // Import the CSS file
 function Navbar() {
   return (
     <div className="navbar-container">
-   <Link to="/">
-        <h1 style={{ color: '#BCE8F3' }}>ExploreVista</h1>
+      <Link to="/" className="explore-vista">
+        <h1>ExploreVista</h1>
       </Link>
       <div className="navbar-buttons">
         <Link to="/Loginpage">
