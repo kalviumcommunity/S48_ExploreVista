@@ -1,0 +1,22 @@
+.api{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+}
+.data {
+    border: 1px solid rgb(1, 1, 99);
+    margin: 30px;
+    padding: 20px;
+    box-shadow: 2px 8px 10px rgba(30, 0, 100, 0.3); 
+    transition: transform 0.3s ease-in-out; 
+}
+
+.data:hover {
+    transform: scale(1.05); 
+    box-shadow: 2px 8px 10px rgba(30, 0, 100, 0.9); 
+
+}
+
+.data p{
+font-size: 20px;
+}
