@@ -9,6 +9,7 @@ function Navbar() {
     <div className="navbar-container">
       <Link to="/" className="explore-vista">
         <h1>ExploreVista</h1>
+        <p>Your tour Guide</p>
       </Link>
       <div className="navbar-buttons">
         <Link to="/Loginpage">
@@ -23,3 +24,6 @@ function Navbar() {
 }
 
 export default Navbar;
+
+
+

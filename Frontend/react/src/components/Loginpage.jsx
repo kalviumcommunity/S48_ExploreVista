@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./Form.css";
 
 export default function Log() {
   const [field, setField] = useState({

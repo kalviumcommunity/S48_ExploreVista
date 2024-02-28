@@ -1,30 +1,32 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require('./routes');
-
+const cors = require('cors');
 const app = express();
-const port = process.env.PUBLIC_PORT || 3000;
-
+const port = 3001;
+const localModal = require('./models/ThingsToDo.js');
 async function Connection() {
   try {
     await mongoose.connect(
-      "mongodb+srv://yashasnaidu3:King%402005@cluster0.gll0see.mongodb.net/"
+      "mongodb+srv://yashasnaidu3:King%402005@cluster0.gll0see.mongodb.net/yourDatabaseName"
     );
+    
     console.log("Connected to MongoDB");
   } catch (err) {
     console.log(err.message);
   }
 }
+app.use(cors())
 app.use(express.json());
 app.use('/api', routes);
 app.get("/", (req, res) => {
   res.json({ message: "pong" });
 });
 
-app.get("/status", (req, res) => {
-  const dbStatus =
-    mongoose.connection.readyState === 1 ? "Connected" : "Disconnected";
-  res.send(`Database Connection Status: ${dbStatus}`);
+app.get("/getlocal", (req, res) => {
+  localModal.find()
+  .then(vehicle => res.json(vehicle))
+  .catch(err => res.json(err)) 
 });
 
 Connection().then(() => {
