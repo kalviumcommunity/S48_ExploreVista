@@ -4,6 +4,8 @@ import {Routes,Route, Link } from 'react-router-dom';
 import Forms from './components/Signup'
 import  Log from './components/Loginpage'
 import Navbar from './Navbar';
+import Home from './components/Home';
+
 function App() {
   return (
     <div className="App">

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Home from "./Home";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
+import { Link } from 'react-router-dom'; 
 export default function Log() {
   const [field, setField] = useState({
     userName: "",
