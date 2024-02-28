@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Form.css";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
+import Home from "./Home"
 export default function Form() {
   const [field, setField] = useState({
     userName: "", // Change field name to userName
@@ -98,10 +98,13 @@ export default function Form() {
           {submitted && field.password !== field.confirmPassword ? (
             <span>Passwords do not match</span>
           ) : null}
-
+           <Link to="/Home">
           <button className="form-field" type="submit">
             Sign Up
           </button>
+          </Link>
+        
+        
         </form>
       </div>
     </div>

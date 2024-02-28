@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Home from "./Home";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 export default function Log() {
   const [field, setField] = useState({
@@ -53,10 +55,12 @@ export default function Log() {
             }}
           />
           {submitted && !field.password ? <span>Please enter your password</span> : null}
-
+          <Link to="/Home">
           <button className="form-field" type="submit">
             Log In
           </button>
+          </Link>
+        
         </form>
       </div>
     </div>

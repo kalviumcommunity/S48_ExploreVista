@@ -1,14 +1,18 @@
-import mongoose from "mongoose"
 
-const mongoose = required("mongoose")
 
-const localSchema = new mongoose.Schema({
-    
-name:String,
-vehicle_for_rent:String,
-taxi_service:String,
-best_vehicle_to_go_in:String
-})
+const mongoose = require("mongoose");
 
-const localModal = mongoose.model("vehicle".localSchema)
-module.exports = localModal;
+const AsapSchema = new mongoose.Schema({
+id:Number,
+place:String,
+
+vehicles_available:Array ,
+
+options_to_stay:Array ,
+brief_history:String,
+constructor:String,
+best_time_to_visit:String,
+});
+
+const AsapModal = mongoose.model("guide",AsapSchema);
+module.exports = AsapModal;
