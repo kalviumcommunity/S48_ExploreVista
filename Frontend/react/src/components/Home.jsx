@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from '../Navbar';
 import axios from 'axios'; 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function Home(){
     const [users,setUsers] = useState([])
