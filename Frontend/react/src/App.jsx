@@ -9,6 +9,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import Users from './Crud';
 import CreateUser from './CreateUser';
+import UpdateUser from './UpdateUser'
 
 function App() {
   
@@ -23,6 +24,7 @@ function App() {
         <Route path="/Home" element={<Home />}></Route>
         <Route path="/Users" element={<Users />}></Route>
         <Route path="/create" element={<CreateUser />}></Route>
+        <Route path="/update" element={<UpdateUser />}></Route>
 
       </Routes>
      

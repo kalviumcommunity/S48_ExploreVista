@@ -18,11 +18,6 @@ app.get("/", async (req, res) => {
   res.json(x);
 });
 
-// app.get("/getlocal", (req, res) => {
-//   localModal.find()
-//   .then(vehicle => res.json(vehicle))
-//   .catch(err => res.json(err)) 
-// });
 
 Connection().then(()=>{
     app.listen(3000,()=>{
