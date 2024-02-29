@@ -7,6 +7,8 @@ import Navbar from './Navbar';
 import Home from './components/Home';
 import axios from 'axios'; 
 import { useEffect } from 'react';
+import Users from './Crud';
+import CreateUser from './CreateUser';
 
 function App() {
   
@@ -19,6 +21,9 @@ function App() {
         <Route path="/Loginpage" element={<Log/>}></Route>
         <Route path="/Signup" element={<Forms/>}></Route>
         <Route path="/Home" element={<Home />}></Route>
+        <Route path="/Users" element={<Users />}></Route>
+        <Route path="/create" element={<CreateUser />}></Route>
+
       </Routes>
      
     </div>

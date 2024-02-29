@@ -19,6 +19,7 @@ function Home(){
                 <p><strong>Vehicles Available: </strong>{guides.vehicles_available}</p>
                 <p><strong>Options to Stay: </strong>{guides.options_to_stay}</p>
                 <p><strong>Brief History: </strong>{guides.brief_history}</p>
+
                 <p><strong>Best Time to Visit: </strong>{guides.best_time_to_visit}</p>
   
               </div>

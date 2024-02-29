@@ -10,7 +10,7 @@ vehicles_available:Array ,
 
 options_to_stay:Array ,
 brief_history:String,
-constructor:String,
+constructor:Array,
 best_time_to_visit:String,
 });
 

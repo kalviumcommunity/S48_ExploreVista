@@ -18,6 +18,9 @@ function Navbar() {
         <Link to="/Signup">
           <button>Sign Up</button>
         </Link>
+        <Link to="/Users">
+          <button>data</button>
+        </Link>
       </div>
     </div>
   );

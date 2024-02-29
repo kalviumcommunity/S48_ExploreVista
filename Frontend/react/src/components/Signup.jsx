@@ -3,6 +3,7 @@ import "./Form.css";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from "./Home"
 import { Link } from 'react-router-dom'; 
+import 'bootstrap/dist/css/bootstrap.min.css'
 export default function Form() {
   
   const [field, setField] = useState({
