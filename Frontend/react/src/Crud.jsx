@@ -3,24 +3,16 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function Users() {
-    const [users, setUsers] = useState([
-        {
-            "_id": "1",
-            "name": "Yasha",
-            "email": "yasha@gmail.com",
-            "age": 18,
-            "password": "password123"
-        }
-    ]);
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000')
+        axios.get('http://localhost:3001/users')
             .then(result => setUsers(result.data))
             .catch(err => console.error(err));
     }, []);
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3000/deleteUser/${id}`)
+        axios.delete(`http://localhost:3001/deleteUser/${id}`)
             .then(res => {
                 console.log(res);
                 setUsers(users.filter(user => user._id !== id));

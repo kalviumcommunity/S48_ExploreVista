@@ -9,16 +9,24 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const mongoURI = "mongodb+srv://yashasnaidu3:yashas3@cluster0.gll0see.mongodb.net/Cites?retryWrites=true&w=majority&appName=Cluster0";
+// MongoDB URI for UserModal
+const userModalURI = "mongodb+srv://yashasnaidu3:yashas3@cluster0.gll0see.mongodb.net/Cites?retryWrites=true&w=majority&appName=Cluster0";
+
+// MongoDB URI for AsapModal
+const asapModalURI = "mongodb://localhost:27017/asapmodal"; // Update this with your actual database name for AsapModal
 
 // Connect to MongoDB
-async function Connection() {
-    await mongoose.connect(mongoURI);
-    console.log("connected to the DB");
+async function connectToDB(uri, dbName) {
+    if (mongoose.connection.readyState === 0) {
+        await mongoose.connect(`${uri}/${dbName}`, { useNewUrlParser: true, useUnifiedTopology: true });
+        console.log(`Connected to DB at ${uri}`);
+    } else {
+        console.log(`Already connected to DB at ${uri}`);
+    }
 }
 
 // Define routes for UserModal
-app.get('/', async (req, res) => {
+app.get('/users', async (req, res) => {
     try {
         const users = await UserModal.find({});
         res.json(users);
@@ -27,7 +35,7 @@ app.get('/', async (req, res) => {
     }
 });
 
-app.get('/getUser/:id', async (req, res) => {
+app.get('/users/:id', async (req, res) => {
     const id = req.params.id;
     try {
         const user = await UserModal.findById(id);
@@ -37,7 +45,7 @@ app.get('/getUser/:id', async (req, res) => {
     }
 });
 
-app.put('/updateUser/:id', async (req, res) => {
+app.put('/users/:id', async (req, res) => {
     const id = req.params.id;
     try {
         const updatedUser = await UserModal.findByIdAndUpdate(
@@ -51,7 +59,7 @@ app.put('/updateUser/:id', async (req, res) => {
     }
 });
 
-app.delete('/deleteUser/:id', async (req, res) => {
+app.delete('/users/:id', async (req, res) => {
     const userId = req.params.id;
     try {
         const deletedUser = await UserModal.findByIdAndDelete(userId);
@@ -61,7 +69,7 @@ app.delete('/deleteUser/:id', async (req, res) => {
     }
 });
 
-app.post("/createUser", async (req, res) => {
+app.post("/users", async (req, res) => {
     try {
         const newUser = await UserModal.create(req.body);
         res.json(newUser);
@@ -83,9 +91,14 @@ app.get("/", async (req, res) => {
     }
 });
 
-Connection().then(() => {
+// Connect to databases and start the server
+Promise.all([connectToDB(userModalURI, 'Cites'), connectToDB(asapModalURI, 'asapmodal')]).then(() => {
+    app.listen(3001, () => {
+        console.log("Server is running on port 3001 for UserModal");
+    });
+
     app.listen(3000, () => {
-        console.log("connected to localhost");
+        console.log("Server is running on port 3000 for AsapModal");
     });
 });
 

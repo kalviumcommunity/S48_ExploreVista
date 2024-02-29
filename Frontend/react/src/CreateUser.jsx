@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-
+import "./components/Form.css";
 function CreateUser() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -35,7 +35,7 @@ function CreateUser() {
         const newUser = { name, email, age, password };
 
         // Send the user data to the server
-        axios.post("http://localhost:3000/createUser", newUser)
+        axios.post("http://localhost:3001/users", newUser)
             .then(result => {
                 console.log(result);
                 navigate('/');
@@ -47,7 +47,7 @@ function CreateUser() {
         <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
             <div className='w-100 bg-white rounded p-3'>
                 <form onSubmit={handleSubmit}>
-                    <h2>Add Users</h2>
+                    <h2>Sign up</h2>
                     <div className="mb-2">
                         <label htmlFor="name">Name</label>
                         <input type="text" id="name" placeholder="Enter Name" className="form-control"
@@ -73,7 +73,7 @@ function CreateUser() {
                         <input type="password" id="confirmPassword" placeholder="Confirm Password" className="form-control"
                             onChange={(e) => setConfirmPassword(e.target.value)} />
                     </div>
-                    <button className="btn btn-success">Submit</button>
+                    <button type="submit" className="btn btn-success">Submit</button>
                 </form>
             </div>
         </div>
