@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const AsapModal = require('./modeles/user');
+const UserModal = require('./modeles/user');
 
 const app = express();
 app.use(cors());
@@ -12,7 +12,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.get('/', async (req, res) => {
     try {
-        const users = await AsapModal.find({});
+        const users = await UserModal.find({});
         res.json(users);
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -22,7 +22,7 @@ app.get('/', async (req, res) => {
 app.get('/getUser/:id', async (req, res) => {
     const id = req.params.id;
     try {
-        const user = await AsapModal.findById(id);
+        const user = await UserModal.findById(id);
         res.json(user);
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -32,7 +32,7 @@ app.get('/getUser/:id', async (req, res) => {
 app.put('/updateUser/:id', async (req, res) => {
     const id = req.params.id;
     try {
-        const updatedUser = await AsapModal.findByIdAndUpdate(
+        const updatedUser = await UserModal.findByIdAndUpdate(
             id,
             { name: req.body.name, email: req.body.email, age: req.body.age },
             { new: true }
@@ -46,7 +46,7 @@ app.put('/updateUser/:id', async (req, res) => {
 app.delete('/deleteUser/:id', async (req, res) => {
     const userId = req.params.id;
     try {
-        const deletedUser = await AsapModal.findByIdAndDelete(userId);
+        const deletedUser = await UserModal.findByIdAndDelete(userId);
         res.json(deletedUser);
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -55,7 +55,7 @@ app.delete('/deleteUser/:id', async (req, res) => {
 
 app.post("/createUser", async (req, res) => {
     try {
-        const newUser = await AsapModal.create(req.body);
+        const newUser = await UserModal.create(req.body);
         res.json(newUser);
     } catch (err) {
         res.status(500).json({ error: err.message });

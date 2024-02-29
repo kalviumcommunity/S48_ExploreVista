@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 
-const AsapSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     name:String,
     email: String,
     age: Number
 })
 
-const AsapModal = mongoose.model("users", AsapSchema)
-module.exports = AsapModal
+const UserModal = mongoose.model("users", UserSchema)
+module.exports = UserModal
