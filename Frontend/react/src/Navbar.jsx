@@ -15,7 +15,7 @@ function Navbar() {
         <Link to="/Loginpage">
           <button>Log In</button>
         </Link>
-        <Link to="/Signup">
+        <Link to="/create">
           <button>Sign Up</button>
         </Link>
         <Link to="/Users">
