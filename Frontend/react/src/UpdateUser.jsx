@@ -7,6 +7,7 @@ function UpdateUser() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [age, setAge] = useState('');
+    const [password, setPassword] = useState(''); // New state for password
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -22,7 +23,7 @@ function UpdateUser() {
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:3001/updateUser/${id}`, { name, email, age })
+        axios.put(`http://localhost:3001/users/${id}`, { name, email, age, password })
             .then(response => {
                 console.log(response);
                 navigate('/');
@@ -49,6 +50,11 @@ function UpdateUser() {
                         <label htmlFor="age">Age </label>
                         <input type="text" id="age" placeholder="Enter Age" className="form-control"
                             value={age} onChange={(e) => setAge(e.target.value)} />
+                    </div>
+                    <div className="mb-2">
+                        <label htmlFor="password">Password </label>
+                        <input type="password" id="password" placeholder="Enter Password" className="form-control"
+                            value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
                     <button type="submit" className="btn btn-success">Update</button>
                 </form>

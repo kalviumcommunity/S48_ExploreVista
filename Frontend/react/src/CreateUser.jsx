@@ -38,7 +38,7 @@ function CreateUser() {
         axios.post("http://localhost:3001/users", newUser)
             .then(result => {
                 console.log(result);
-                navigate('/');
+                navigate('/Home');
             })
             .catch(err => console.error(err));
     }

@@ -15,18 +15,12 @@ function Home(){
         {users &&
             users.map((guides, id) => (
               <div className="data" key={id}>
-                
                 <p><strong>Place: </strong>{guides.place}</p>
                 <p><strong>City: </strong>{guides.city}</p>
                 <p><strong>State: </strong>{guides.state}</p>
-
                 <p><strong>Vehicles Available: </strong>{guides.vehicles_available}</p>
-                
                 <p><strong>Options to Stay: </strong>{guides.options_to_stay}</p>
-
-
                 <p><strong>Best Time to Visit: </strong>{guides.best_time_to_visit}</p>
-  
               </div>
             ))}
           
