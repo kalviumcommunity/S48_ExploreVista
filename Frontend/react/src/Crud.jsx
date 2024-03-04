@@ -12,7 +12,7 @@ function Users() {
     }, []);
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3001/deleteUser/${id}`)
+        axios.delete(`http://localhost:3001/users/${id}`)
             .then(res => {
                 console.log(res);
                 setUsers(users.filter(user => user._id !== id));

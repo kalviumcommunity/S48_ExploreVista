@@ -21,6 +21,8 @@ function App() {
         <Route path="/Users" element={<Users />} />
         <Route path="/create" element={<CreateUser />} />
         <Route path="/update/:id" element={<UpdateUser />} />
+        {/* Add a default route for the root path */}
+        <Route path="/Home" element={<Home />} />
       </Routes>
     </div>
   );

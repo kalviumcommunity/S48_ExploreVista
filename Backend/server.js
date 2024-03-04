@@ -4,7 +4,7 @@ const cors = require('cors');
 const UserModal = require('./modeles/user');
 const AsapModal = require('./modeles/ThingsToDo.js');
 const routes = require('./routes.js');
-
+const Joi = require("joi")
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -24,6 +24,21 @@ async function connectToDB(uri, dbName) {
         console.log(`Already connected to DB at ${uri}`);
     }
 }
+
+const CreateUserSchema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().min(3).max(10).required()
+})
+
+app.post("/create", (req, res) => {
+    const { error, value } = CreateUserSchema.validate(req.body);
+    if (error) {
+        console.log(error);
+        return res.send("Invalid Request")
+    }
+
+    res.send("Successfully signed up !")
+})
 
 // Define routes for UserModal
 app.get('/users', async (req, res) => {
@@ -103,4 +118,3 @@ Promise.all([connectToDB(userModalURI, 'Cites'), connectToDB(asapModalURI, 'asap
 });
 
 module.exports = app;
-
