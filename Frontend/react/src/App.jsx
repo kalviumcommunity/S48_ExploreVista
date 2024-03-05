@@ -7,6 +7,8 @@ import Home from './components/Home';
 import Users from './Crud';
 import CreateUser from './CreateUser';
 import UpdateUser from './UpdateUser';
+import Footer from './Footer';
+import Contact from './components/Contact'
 
 function App() {
   return (
@@ -21,9 +23,13 @@ function App() {
         <Route path="/Users" element={<Users />} />
         <Route path="/create" element={<CreateUser />} />
         <Route path="/update/:id" element={<UpdateUser />} />
-        {/* Add a default route for the root path */}
         <Route path="/Home" element={<Home />} />
+        <Route path="/Contact Us" element={<Contact />} />
+
       </Routes>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }
