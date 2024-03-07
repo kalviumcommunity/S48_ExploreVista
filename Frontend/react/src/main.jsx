@@ -7,8 +7,8 @@ import Forms from './components/Signup'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <React.StrictMode>
+   
       <App />
-    </React.StrictMode>
+   
   </BrowserRouter>
 )

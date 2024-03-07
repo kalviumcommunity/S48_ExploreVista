@@ -7,7 +7,7 @@ import Home from './components/Home';
 import Users from './Crud';
 import CreateUser from './CreateUser';
 import UpdateUser from './UpdateUser';
-import Footer from './Footer';
+import Footer from './components/Footer';
 import Contact from './components/Contact'
 
 function App() {
@@ -19,13 +19,11 @@ function App() {
       <Routes>
         <Route path="/Loginpage" element={<Log />} />
         <Route path="/Signup" element={<Forms />} />
-        <Route path="/Home" element={<Home />} />
         <Route path="/Users" element={<Users />} />
         <Route path="/create" element={<CreateUser />} />
         <Route path="/update/:id" element={<UpdateUser />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/Contact Us" element={<Contact />} />
-        <Route path="/" element={<App />} />
 
       </Routes>
       <footer>
