@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./components/Form.css";
 
 function UpdateUser() {
     const { id } = useParams();
@@ -9,7 +10,6 @@ function UpdateUser() {
     const [age, setAge] = useState('');
     const [password, setPassword] = useState(''); // New state for password
     const navigate = useNavigate();
-
     useEffect(() => {
         axios.get(`http://localhost:3001/getUser/${id}`)
             .then(response => {
@@ -20,7 +20,6 @@ function UpdateUser() {
             })
             .catch(error => console.log(error));
     }, [id]);
-
     const handleUpdate = (e) => {
         e.preventDefault();
         axios.put(`http://localhost:3001/users/${id}`, { name, email, age, password })
@@ -30,12 +29,11 @@ function UpdateUser() {
             })
             .catch(error => console.log(error));
     }
-
     return (
-        <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
-            <div className='w-100 bg-white rounded p-3'>
+        <div className="form-container">
+            <div className='register-form '>
                 <form onSubmit={handleUpdate}>
-                    <h2>Update Users</h2>
+                    <h2>Update Your Data</h2>
                     <div className="mb-2">
                         <label htmlFor="name">Name </label>
                         <input type="text" id="name" placeholder="Enter Name" className="form-control"
@@ -56,11 +54,10 @@ function UpdateUser() {
                         <input type="password" id="password" placeholder="Enter Password" className="form-control"
                             value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
-                    <button type="submit" className="btn btn-success">Update</button>
+                    <button type="submit" className="form-field">Update</button>
                 </form>
             </div>
         </div>
     );
 }
-
 export default UpdateUser;

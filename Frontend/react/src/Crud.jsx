@@ -40,7 +40,7 @@ function Users() {
                                 <td>{user.email}</td>
                                 <td>{user.age}</td>
                                 <td>
-                                    <Link to={`/update/${user._id}`} className='btn btn-success'>Update</Link>
+                                    <Link to={`/update/${user._id}`} className='btn btn-success'>Update your Data</Link>
                                     <button className='btn btn-danger' onClick={() => handleDelete(user._id)}>Delete</button>
                                 </td>
                             </tr>
