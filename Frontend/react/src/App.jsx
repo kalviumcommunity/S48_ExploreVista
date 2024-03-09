@@ -23,7 +23,7 @@ function App() {
         <Route path="/create" element={<CreateUser />} />
         <Route path="/update/:id" element={<UpdateUser />} />
         <Route path="/Home" element={<Home />} />
-        <Route path="/Contact Us" element={<Contact />} />
+        <Route path="/Contact" element={<Contact />} />
 
       </Routes>
       <footer>

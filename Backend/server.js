@@ -12,7 +12,6 @@ app.use(express.json());
 
 // MongoDB URI for UserModal
 const userModalURI = "mongodb+srv://yashasnaidu3:yashas3@cluster0.gll0see.mongodb.net/Cites?retryWrites=true&w=majority&appName=Cluster0";
-
 // MongoDB URI for AsapModal
 const asapModalURI = "mongodb://localhost:27017/asapmodal"; // Update this with your actual database name for AsapModal
 
@@ -37,7 +36,52 @@ async function connectToAsapDB() {
 }
 
 // Define routes for UserModal
-app.post("/users", async (req, res) => {
+// Define routes for UserModal
+app.get('/getusers', async (req, res) => {
+    try {
+        const users = await UserModal.find({});
+        res.json(users);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.get('/getusers/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        const user = await UserModal.findById(id);
+        res.json(user);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.put('/updateUsers/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        const updatedUser = await UserModal.findByIdAndUpdate(
+            id,
+            { name: req.body.name, email: req.body.email, age: req.body.age, password: req.body.password},
+            { new: true }
+        );
+        res.json(updatedUser);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.delete('/deleteUsers/:id', async (req, res) => {
+    const userId = req.params.id;
+    try {
+        const deletedUser = await UserModal.findByIdAndDelete(userId);
+        res.json(deletedUser);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+
+app.post("/createUser", async (req, res) => {
     try {
         // Validate input using Joi
         const { error } = userValidationSchema.validate(req.body);
@@ -52,70 +96,6 @@ app.post("/users", async (req, res) => {
     }
 });
 
-app.get('/users', async (req, res) => {
-    try {
-        const users = await UserModal.find({});
-        res.json(users);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-
-app.get('/users/:id', async (req, res) => {
-    const id = req.params.id;
-    try {
-        const user = await UserModal.findById(id);
-        res.json(user);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-
-app.put('/users/:id', async (req, res) => {
-    const id = req.params.id;
-    try {
-        const updatedUser = await UserModal.findByIdAndUpdate(
-            id,
-            { name: req.body.name, email: req.body.email, age: req.body.age },
-            { new: true }
-        );
-        res.json(updatedUser);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-
-app.delete('/users/:id', async (req, res) => {
-    const userId = req.params.id;
-    try {
-        const deletedUser = await UserModal.findByIdAndDelete(userId);
-        res.json(deletedUser);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-
-app.post("/users", async (req, res) => {
-    try {
-        const newUser = await UserModal.create(req.body);
-        res.json(newUser);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-
-// Define routes for AsapModal
-app.use("/main", routes);
-
-app.get("/", async (req, res) => {
-    try {
-        const asapModels = await AsapModal.find();
-        console.log(asapModels);
-        res.json(asapModels);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
 // Define routes for AsapModal
 app.use("/main", routes);
 

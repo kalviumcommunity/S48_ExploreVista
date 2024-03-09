@@ -6,13 +6,13 @@ function Users() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3001/users')
+        axios.get('http://localhost:3001/getusers')
             .then(result => setUsers(result.data))
             .catch(err => console.error(err));
     }, []);
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3001/users/${id}`)
+        axios.delete(`http://localhost:3001/deleteUsers/${id}`)
             .then(res => {
                 console.log(res);
                 setUsers(users.filter(user => user._id !== id));
@@ -30,6 +30,7 @@ function Users() {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Age</th>
+                            <th>Password</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -39,6 +40,7 @@ function Users() {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.age}</td>
+                                <td>{user.password}</td>
                                 <td>
                                     <Link to={`/update/${user._id}`} className='btn btn-success'>Update your Data</Link>
                                     <button className='btn btn-danger' onClick={() => handleDelete(user._id)}>Delete</button>

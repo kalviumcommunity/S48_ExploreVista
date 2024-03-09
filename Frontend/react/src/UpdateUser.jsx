@@ -11,24 +11,30 @@ function UpdateUser() {
     const [password, setPassword] = useState(''); // New state for password
     const navigate = useNavigate();
     useEffect(() => {
-        axios.get(`http://localhost:3001/getUser/${id}`)
+        axios.get(`http://localhost:3001/getusers/${id}`)
             .then(response => {
-                const { name, email, age } = response.data;
+                const { name, email, age, password } = response.data;
                 setName(name);
                 setEmail(email);
                 setAge(age);
+                setPassword(password);  // Add this line to set the password
             })
             .catch(error => console.log(error));
-    }, [id]);
+    }, []);
+    
     const handleUpdate = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:3001/users/${id}`, { name, email, age, password })
+        console.log("Updating with data:", { name, email, age, password });
+    
+        axios.put(`http://localhost:3001/updateUsers/${id}`, { name, email, age, password })
             .then(response => {
                 console.log(response);
-                navigate('/');
+                navigate('/Home');
             })
             .catch(error => console.log(error));
     }
+    
+    
     return (
         <div className="form-container">
             <div className='register-form '>
