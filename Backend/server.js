@@ -1,14 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const { UserModal, userValidationSchema } = require('./modeles/user.js');
-const AsapModal = require('./modeles/ThingsToDo.js');
+const AsapModal = require('./modeles/user.js'); // Check this line
 const routes = require('./routes.js');
 const Joi = require("joi");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 // MongoDB URI for UserModal
 const userModalURI = "mongodb+srv://yashasnaidu3:yashas3@cluster0.gll0see.mongodb.net/Cites?retryWrites=true&w=majority&appName=Cluster0";
@@ -35,7 +37,6 @@ async function connectToAsapDB() {
     }
 }
 
-// Define routes for UserModal
 // Define routes for UserModal
 app.get('/getusers', async (req, res) => {
     try {
@@ -80,6 +81,27 @@ app.delete('/deleteUsers/:id', async (req, res) => {
     }
 });
 
+// Add a cookie when a user logs in
+app.post("/login", async (req, res) => {
+    try {
+        // Assuming your login logic involves checking credentials
+        const { email, password } = req.body;
+        
+        // Find the user in the MongoDB database
+        const user = await UserModal.findOne({ email, password });
+
+        if (!user) {
+            return res.status(401).json({ error: 'Invalid credentials' });
+        }
+
+        // Set a cookie with user information
+        res.cookie('user_id', user._id, { httpOnly: true });
+
+        res.json({ message: 'Login successful', user });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
 
 app.post("/createUser", async (req, res) => {
     try {
