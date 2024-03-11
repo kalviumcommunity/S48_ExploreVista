@@ -24,7 +24,6 @@ function App() {
         <Route path="/update/:id" element={<UpdateUser />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/Contact" element={<Contact />} />
-
       </Routes>
       <footer>
         <Footer />
