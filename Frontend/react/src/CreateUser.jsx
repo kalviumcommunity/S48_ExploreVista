@@ -76,7 +76,7 @@ function CreateUser() {
         axios.post("http://localhost:3001/createUser", newUser)
             .then(result => {
                 console.log(result);
-                navigate('/Home');
+                navigate('/Loginpage');
             })
             .catch(err => {
                 console.error(err);

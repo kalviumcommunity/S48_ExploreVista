@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 function Users() {
     const [users, setUsers] = useState([]);
-
+    const navigate = useNavigate()
+    
     useEffect(() => {
         axios.get('http://localhost:3001/getusers')
             .then(result => setUsers(result.data))
@@ -18,6 +19,8 @@ function Users() {
                 setUsers(users.filter(user => user._id !== id));
             })
             .catch(err => console.error(err));
+            document.cookie = 'email=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/';
+            navigate('/Loginpage');
     };
 
     return (

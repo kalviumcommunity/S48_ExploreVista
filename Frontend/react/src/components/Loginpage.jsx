@@ -11,6 +11,12 @@ export default function Log() {
   const [validate, setValidation] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate(); 
+ function setCookie(email, value, daysToExpire) {
+  let date = new Date();
+  date.setTime(date.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
+  document.cookie =
+    email + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+}
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmit(true);
@@ -24,6 +30,8 @@ export default function Log() {
       // Assuming your server returns a success message on successful login
       if (response.data.message === "Login successful") {
         setValidation(true);
+        setCookie('email',field.email,1)
+        console.log(document.cookie)
         setError("");
         navigate("/Home");
       } else {
