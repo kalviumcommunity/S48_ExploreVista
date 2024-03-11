@@ -16,7 +16,8 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-      </div>      <div className="footer-bottom">
+      </div>  
+      <div className="footer-bottom">
         <p>&copy; 2024 Your Website. All rights reserved.</p>5
 
       </div>

@@ -1,47 +1,64 @@
 import React, { useState } from "react";
-import Home from "./Home";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Link } from 'react-router-dom'; 
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 export default function Log() {
   const [field, setField] = useState({
-    userName: "",
+    email: "",
     password: "",
   });
-
   const [submitted, setSubmit] = useState(false);
   const [validate, setValidation] = useState(false);
-
-  const handleSubmit = (e) => {
+  const [error, setError] = useState("");
+  const navigate = useNavigate(); 
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (field.userName && field.password) {
-      // Validation logic if needed
-      setValidation(true);
-    } else {
-      setValidation(false);
-    }
     setSubmit(true);
+
+    try {
+      const response = await axios.post("http://localhost:3001/login", {
+        email: field.email,
+        password: field.password,
+        action: "login", // Add this line to specify the action
+      });
+      // Assuming your server returns a success message on successful login
+      if (response.data.message === "Login successful") {
+        setValidation(true);
+        setError("");
+        navigate("/Home");
+      } else {
+        setValidation(false);
+        setError("Invalid credentials");
+      }
+    } catch (err) {
+      setValidation(false);
+      setError("Email or Password is invalid");
+      console.error(err);
+    }
   };
 
   return (
     <div>
       <div className="form-container">
         <form className="register-form" onSubmit={handleSubmit}>
-          {submitted && validate ? (
-            <div className="success-message">Login successful!</div>
-          ) : null}
+          {submitted && !validate && error && (
+            <div className="error-message">{error}</div>
+          )}
 
           <input
-            id="user-name"
+            id="email"
             className="form-field"
             type="text"
-            placeholder="Username"
-            name="userName"
-            value={field.userName}
+            placeholder="Email"
+            name="email"
+            value={field.email}
             onChange={(e) => {
-              setField({ ...field, userName: e.target.value });
+              setField({ ...field, email: e.target.value });
             }}
           />
-          {submitted && !field.userName ? <span>Please enter your Username</span> : null}
+          {submitted && !field.email && (
+            <span>Please enter your Email</span>
+          )}
 
           <input
             id="password"
@@ -54,13 +71,12 @@ export default function Log() {
               setField({ ...field, password: e.target.value });
             }}
           />
-          {submitted && !field.password ? <span>Please enter your password</span> : null}
-          <Link to="/Home">
+          {submitted && !field.password && (
+            <span>Please enter your password</span>
+          )}
           <button className="form-field" type="submit">
             Log In
           </button>
-          </Link>
-        
         </form>
       </div>
     </div>
