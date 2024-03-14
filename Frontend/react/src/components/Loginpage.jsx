@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie"; // Import the Cookies object
 
 export default function Log() {
   const [field, setField] = useState({
@@ -10,13 +11,8 @@ export default function Log() {
   const [submitted, setSubmit] = useState(false);
   const [validate, setValidation] = useState(false);
   const [error, setError] = useState("");
-  const navigate = useNavigate(); 
- function setCookie(email, value, daysToExpire) {
-  let date = new Date();
-  date.setTime(date.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
-  document.cookie =
-    email + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
-}
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmit(true);
@@ -27,11 +23,12 @@ export default function Log() {
         password: field.password,
         action: "login", // Add this line to specify the action
       });
+
       // Assuming your server returns a success message on successful login
       if (response.data.message === "Login successful") {
         setValidation(true);
-        setCookie('email',field.email,1)
-        console.log(document.cookie)
+        // Set the token value in a cookie
+        Cookies.set("token", response.data.token, { expires: 1 });
         setError("");
         navigate("/Home");
       } else {
