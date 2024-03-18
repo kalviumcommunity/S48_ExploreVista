@@ -8,7 +8,7 @@ function Navbar() {
 
   const  navigate = useNavigate();
   const handleLogout = ()=>{
-    document.cookie = 'email=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/';
+    document.cookie = 'token=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/';
     navigate('/Loginpage');
   }
 
@@ -34,6 +34,5 @@ function Navbar() {
 }
 
 export default Navbar;
-
 
 

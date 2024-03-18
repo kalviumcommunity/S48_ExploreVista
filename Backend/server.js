@@ -61,10 +61,13 @@ app.get('/getusers/:id', async (req, res) => {
 
 app.put('/updateUsers/:id', async (req, res) => {
     const id = req.params.id;
+    console.log(req.body,id);
     try {
+        const { name, email, age, password, places } = req.body; // Extract places from the request body
+
         const updatedUser = await UserModal.findByIdAndUpdate(
             id,
-            { name: req.body.name, email: req.body.email, age: req.body.age, password: req.body.password},
+            req.body , // Add place and experiences to visitedPlaces array using $addToSet
             { new: true }
         );
         res.json(updatedUser);
@@ -72,6 +75,7 @@ app.put('/updateUsers/:id', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
 
 app.delete('/deleteUsers/:id', async (req, res) => {
     const userId = req.params.id;

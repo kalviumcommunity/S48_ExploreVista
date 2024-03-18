@@ -8,7 +8,9 @@ import Users from './Crud';
 import CreateUser from './CreateUser';
 import UpdateUser from './UpdateUser';
 import Footer from './components/Footer';
-import Contact from './components/Contact'
+import Contact from './components/Contact';
+import  Feedback from './Feedback';
+
 
 function App() {
   return (
@@ -24,9 +26,10 @@ function App() {
         <Route path="/update/:id" element={<UpdateUser />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="/feedback/:id" element={<Feedback/>} />
       </Routes>
       <footer>
-        <Footer />
+        <Footer/>
       </footer>
     </div>
   );
