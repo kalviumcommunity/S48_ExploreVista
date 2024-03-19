@@ -2,15 +2,15 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Forms from './components/Signup';
 import Log from './components/Loginpage';
-import Navbar from './Navbar';
+import Navbar from './components/Navbar';
 import Home from './components/Home';
-import Users from './Crud';
-import CreateUser from './CreateUser';
-import UpdateUser from './UpdateUser';
+import Users from './components/Crud';
+import CreateUser from './components/CreateUser';
+import UpdateUser from './components/UpdateUser';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
-import Feedback from './Feedback';
-import Print from './PrintFeedback';
+import Feedback from './components/Feedback';
+import Print from './components/PrintFeedback';
 
 function App() {
   return (
