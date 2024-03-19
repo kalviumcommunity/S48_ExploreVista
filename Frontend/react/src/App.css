@@ -1,8 +1,20 @@
+body {
+    background-image: url('./images/Background.png');
+    background-color: #000b2e; /* Choose your desired background color */
+    background-size: contain; /* Fit the background image within the body */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    height: 100vh; /* Set the body height to fill the viewport height */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
 .api{
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 10px;
 }
+
 .data {
     border: 1px solid rgb(1, 1, 99);
     margin: 30px;
@@ -14,9 +26,8 @@
 .data:hover {
     transform: scale(1.05); 
     box-shadow: 2px 8px 10px rgba(30, 0, 100, 0.9); 
-
 }
 
 .data p{
-font-size: 20px;
+    font-size: 20px;
 }

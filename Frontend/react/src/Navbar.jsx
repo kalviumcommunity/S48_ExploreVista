@@ -28,11 +28,15 @@ function Navbar() {
         <Link to="/Loginpage">
           <button onClick={handleLogout}>Log Out</button>
         </Link>
+        <Link to="/Feedbackofuser">
+          <button>See User Feedback</button>
+        </Link> <Link to="/moreaboutus">
+          <button>Know More about us</button>
+        </Link>
       </div>
     </div>
   );
 }
-
 export default Navbar;
 
 

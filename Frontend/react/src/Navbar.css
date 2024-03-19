@@ -32,7 +32,6 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #fff;
     border: 1px solid #ccc;
     padding: 5px 10px;
     border-radius: 5px;
@@ -48,9 +47,5 @@
   .user-names-list li {
     padding: 5px 0;
     cursor: pointer;
-  }
-  
-  .user-names-list li:hover {
-    background-color: #f0f0f0;
   }
   

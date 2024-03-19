@@ -9,12 +9,12 @@ import CreateUser from './CreateUser';
 import UpdateUser from './UpdateUser';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
-import  Feedback from './Feedback';
-
+import Feedback from './Feedback';
+import Print from './PrintFeedback';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundImage: `url('path/to/your/background-image.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
       <header>
         <Navbar />
       </header>
@@ -26,11 +26,10 @@ function App() {
         <Route path="/update/:id" element={<UpdateUser />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/Contact" element={<Contact />} />
-        <Route path="/feedback/:id" element={<Feedback/>} />
+        <Route path="/feedback/:id" element={<Feedback />} />
+        <Route path="/Feedbackofuser" element={<Print />} />
+        <Route path="/moreaboutus" element={<Footer/>} />
       </Routes>
-      <footer>
-        <Footer/>
-      </footer>
     </div>
   );
 }

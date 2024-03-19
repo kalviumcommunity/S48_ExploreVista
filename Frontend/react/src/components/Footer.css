@@ -3,8 +3,11 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #588fc6; /* Adjust background color as needed */
+    background-color: #000B2E; /* Adjust background color as needed */
     padding: 20px 0;
+    color: #BCE8F3 ;
+    color: #BCE8F3;
+    text-decoration: none;
  }
   
   .container {
@@ -16,12 +19,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #BCE8F3;
+    text-decoration: none;
+  }
+  .footer-section{
+    color: #BCE8F3;
+    text-decoration: none;
   }
   
-  .horizontal-list {
-    display: flex;
-    list-style: none;
-  }
   
   .horizontal-list li {
     margin-right: 10px; /* Adjust spacing between list items */
@@ -35,4 +40,4 @@
     text-align: center;
     margin-top: 10px; /* Adjust spacing between content and bottom */
   }
-  
+    
