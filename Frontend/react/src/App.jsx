@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Forms from './components/Signup';
 import Log from './components/Loginpage';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -20,7 +19,6 @@ function App() {
       </header>
       <Routes>
         <Route path="/Loginpage" element={<Log />} />
-        <Route path="/Signup" element={<Forms />} />
         <Route path="/Users" element={<Users />} />
         <Route path="/create" element={<CreateUser />} />
         <Route path="/update/:id" element={<UpdateUser />} />

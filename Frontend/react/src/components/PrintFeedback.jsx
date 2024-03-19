@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './App.css';
+import '../App.css';
 
 function Print() {
   const [users, setUsers] = useState([]);
