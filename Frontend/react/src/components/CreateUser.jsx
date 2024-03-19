@@ -84,7 +84,7 @@ function CreateUser() {
     }
 
     return (
-        <div className="form-container">
+        <div className="form-container ">
             <div className='register-form'>
                 <form onSubmit={handleSubmit}>
                     <h2>Sign up</h2>
