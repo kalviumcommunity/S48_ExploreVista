@@ -8,7 +8,7 @@ function Navbar() {
 
   const  navigate = useNavigate();
   const handleLogout = ()=>{
-    document.cookie = 'email=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/';
+    document.cookie = 'token=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/';
     navigate('/Loginpage');
   }
 
@@ -28,12 +28,15 @@ function Navbar() {
         <Link to="/Loginpage">
           <button onClick={handleLogout}>Log Out</button>
         </Link>
+        <Link to="/Feedbackofuser">
+          <button>See User Feedback</button>
+        </Link> <Link to="/moreaboutus">
+          <button>Know More about us</button>
+        </Link>
       </div>
     </div>
   );
 }
-
 export default Navbar;
-
 
 

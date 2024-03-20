@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import "./components/Form.css";
+import "./Form.css";
 
 function CreateUser() {
     const [name, setName] = useState("");
@@ -84,7 +84,7 @@ function CreateUser() {
     }
 
     return (
-        <div className="form-container">
+        <div className="form-container ">
             <div className='register-form'>
                 <form onSubmit={handleSubmit}>
                     <h2>Sign up</h2>

@@ -2,9 +2,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+
 function Users() {
     const [users, setUsers] = useState([]);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('http://localhost:3001/getusers')
@@ -19,7 +20,11 @@ function Users() {
                 setUsers(users.filter(user => user._id !== id));
             })
             .catch(err => console.error(err));
+    };
 
+    const handleFeedback = (id) => {
+        // Redirect to the feedback page for the selected user
+        navigate(`/feedback/${id}`);
     };
 
     return (
@@ -34,6 +39,7 @@ function Users() {
                             <th>Age</th>
                             <th>Password</th>
                             <th>Action</th>
+                            <th>Feedback</th> {/* Add Feedback column header */}
                         </tr>
                     </thead>
                     <tbody>
@@ -44,8 +50,11 @@ function Users() {
                                 <td>{user.age}</td>
                                 <td>{user.password}</td>
                                 <td>
-                                    <Link to={`/update/${user._id}`} className='btn btn-success'>Update your Data</Link>
+                                    <Link to={`/update/${user._id}`} className='btn btn-success'>Update Your Data</Link>
                                     <button className='btn btn-danger' onClick={() => handleDelete(user._id)}>Delete</button>
+                                </td>
+                                <td>
+                                    <button className='btn btn-primary' onClick={() => handleFeedback(user._id)}>Feedback</button> {/* Add Feedback button */}
                                 </td>
                             </tr>
                         ))}

@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({  
     name: String,
     email: String,
     age: Number,
-    password: String // Add the password field
+    password: String,
+    places: [{ name: String, experiences: [String], feedback: [String] }], // Array of places with experiences and feedback
 });
 
 const userValidationSchema = Joi.object({
@@ -15,7 +16,8 @@ const userValidationSchema = Joi.object({
     password: Joi.string().required()
 });
 
-
 const UserModal = mongoose.model("users", UserSchema);
-module.exports = {UserModal,
-    userValidationSchema};
+module.exports = {
+    UserModal,
+    userValidationSchema
+};

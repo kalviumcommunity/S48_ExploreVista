@@ -28,3 +28,24 @@
     width: 75px;
     border-radius: 20px;
   }
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    max-height: 200px; /* Optional: Set a maximum height for the dropdown */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+  
+  .user-names-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .user-names-list li {
+    padding: 5px 0;
+    cursor: pointer;
+  }
+  

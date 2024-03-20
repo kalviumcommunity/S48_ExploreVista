@@ -6,6 +6,8 @@ const { UserModal, userValidationSchema } = require('./modeles/user.js');
 const AsapModal = require('./modeles/ThingsToDo.js'); // Check this line
 const routes = require('./routes.js');
 const Joi = require("joi");
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const app = express();
 app.use(cors());
@@ -59,10 +61,13 @@ app.get('/getusers/:id', async (req, res) => {
 
 app.put('/updateUsers/:id', async (req, res) => {
     const id = req.params.id;
+    console.log(req.body,id);
     try {
+        const { name, email, age, password, places } = req.body; // Extract places from the request body
+
         const updatedUser = await UserModal.findByIdAndUpdate(
             id,
-            { name: req.body.name, email: req.body.email, age: req.body.age, password: req.body.password},
+            req.body , // Add place and experiences to visitedPlaces array using $addToSet
             { new: true }
         );
         res.json(updatedUser);
@@ -70,6 +75,7 @@ app.put('/updateUsers/:id', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
 
 app.delete('/deleteUsers/:id', async (req, res) => {
     const userId = req.params.id;
@@ -94,10 +100,13 @@ app.post("/login", async (req, res) => {
             return res.status(401).json({ error: 'Invalid credentials' });
         }
 
-        // Set a cookie with user information
-        res.cookie('user_id', user._id, { httpOnly: true });
+        // Generate a token for the user
+        const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
 
-        res.json({ message: 'Login successful', user });
+        // Set a cookie with the token
+        res.cookie('token', token, { httpOnly: true });
+
+        res.json({ message: 'Login successful', user , token });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
