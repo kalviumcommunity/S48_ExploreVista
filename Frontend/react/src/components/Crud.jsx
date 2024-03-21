@@ -8,13 +8,13 @@ function Users() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('http://localhost:3001/getusers')
+        axios.get('https://s48-explorevista-2.onrender.com/getusers')
             .then(result => setUsers(result.data))
             .catch(err => console.error(err));
     }, []);
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3001/deleteUsers/${id}`)
+        axios.delete(`https://s48-explorevista-2.onrender.com/deleteUsers/${id}`)
             .then(res => {
                 console.log(res);
                 setUsers(users.filter(user => user._id !== id));

@@ -7,7 +7,7 @@ function Home() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/')
+    axios.get('https://s48-explorevista-2.onrender.com')
       .then(response => setUsers(response.data))
       .catch(err => console.log(err));
   }, []);

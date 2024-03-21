@@ -11,7 +11,7 @@ function UpdateUser() {
     const [password, setPassword] = useState(''); // New state for password
     const navigate = useNavigate();
     useEffect(() => {
-        axios.get(`http://localhost:3001/getusers/${id}`)
+        axios.get(`https://s48-explorevista-2.onrender.com/getusers/${id}`)
             .then(response => {
                 const { name, email, age, password } = response.data;
                 setName(name);
@@ -26,7 +26,7 @@ function UpdateUser() {
         e.preventDefault();
         console.log("Updating with data:", { name, email, age, password });
     
-        axios.put(`http://localhost:3001/updateUsers/${id}`, { name, email, age, password })
+        axios.put(`https://s48-explorevista-2.onrender.com/updateUsers/${id}`, { name, email, age, password })
             .then(response => {
                 console.log(response);
                 navigate('/Home');

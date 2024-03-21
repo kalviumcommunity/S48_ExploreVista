@@ -73,7 +73,7 @@ function CreateUser() {
         const newUser = { name, email, age, password };
 
         // Send the user data to the server
-        axios.post("http://localhost:3001/createUser", newUser)
+        axios.post("https://s48-explorevista-2.onrender.com/createUser", newUser)
             .then(result => {
                 console.log(result);
                 navigate('/Loginpage');

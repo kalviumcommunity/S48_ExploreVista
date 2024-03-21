@@ -14,7 +14,7 @@ function Experiences() {
     const fetchExperiences = async () => {
       try {
         if (id) {
-          const response = await axios.get(`http://localhost:3001/getusers/${id}`);
+          const response = await axios.get(`https://s48-explorevista-2.onrender.com/getusers/${id}`);
           if (!Array.isArray(response.data)) {
             const userExperiences = response.data.experiences || [];
             setExperiences(userExperiences);
@@ -39,7 +39,7 @@ function Experiences() {
         return;
       }
       console.log(newPlace,newExperience)
-      const response = await axios.put(`http://localhost:3001/updateUsers/${id}`, {
+      const response = await axios.put(`https://s48-explorevista-2.onrender.com/updateUsers/${id}`, {
         
         place: newPlace,
         experience: newExperience

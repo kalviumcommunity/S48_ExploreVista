@@ -6,7 +6,7 @@ function Print() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/getusers')
+    axios.get('https://s48-explorevista-2.onrender.com/getusers')
       .then(response => setUsers(response.data))
       .catch(err => console.log(err));
   }, []);

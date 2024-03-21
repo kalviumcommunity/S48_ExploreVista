@@ -15,7 +15,7 @@ function Feedback() {
         const fetchPlaces = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`http://localhost:3001/getusers/${id}`);
+                const response = await axios.get(`https://s48-explorevista-2.onrender.com/getusers/${id}`);
                 if (response.data && response.data.places) {
                     setPlaces(response.data.places);
                 }
@@ -32,7 +32,7 @@ function Feedback() {
     const handleSubmit = async () => {
         try {
             // Submit the updated places array with experiences and feedback for the user with the given ID
-            const response = await axios.put(`http://localhost:3001/updateUsers/${id}`, {
+            const response = await axios.put(`https://s48-explorevista-2.onrender.com/updateUsers/${id}`, {
                 places: places
             });
             console.log('Feedback submitted:', response.data);

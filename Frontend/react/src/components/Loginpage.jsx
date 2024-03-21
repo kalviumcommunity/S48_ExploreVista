@@ -18,7 +18,7 @@ export default function Log() {
     setSubmit(true);
 
     try {
-      const response = await axios.post("http://localhost:3001/login", {
+      const response = await axios.post("https://s48-explorevista-2.onrender.com/login", {
         email: field.email,
         password: field.password,
         action: "login", // Add this line to specify the action
