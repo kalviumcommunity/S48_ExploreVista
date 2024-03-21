@@ -52,3 +52,7 @@ This project is licensed under the [ISC License](LICENSE).
 ## Contact
 
 If you have any questions or suggestions, feel free to contact us at [your.email@example.com](mailto:your.email@example.com).
+
+---
+
+**Note:** ExploreVista Backend is deployed globally. You can access the server at [https://s48-explorevista-2.onrender.com/](https://s48-explorevista-2.onrender.com/).

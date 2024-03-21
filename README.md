@@ -68,3 +68,7 @@ Contributions to ExploreVista frontend and backend are welcome! If you find any 
 This project is licensed under the [MIT License](LICENSE).
 
 Thank you for using ExploreVista! Happy exploring!
+
+---
+
+**Note:** ExploreVista Frontend is deployed and accessible at [https://65fbc2c3df8ffd74b33773a0--harmonious-crepe-1823b3.netlify.app/](https://65fbc2c3df8ffd74b33773a0--harmonious-crepe-1823b3.netlify.app/), and ExploreVista Backend is deployed and accessible at [https://s48-explorevista-2.onrender.com/](https://s48-explorevista-2.onrender.com/).
