@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
+const cors = require('                                                                                                                  ');
 const cookieParser = require('cookie-parser');
 const { UserModal, userValidationSchema } = require('./modeles/user.js');
 const AsapModal = require('./modeles/ThingsToDo.js'); // Check this line
